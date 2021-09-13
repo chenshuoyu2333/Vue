@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue01</title>
+  </head>
+  <body>
+    <div id="app">
+         <h2>{{fullName}}</h2>
+         <h2>{{fullName}}</h2>
+         <h2>{{fullName}}</h2>
+         <h2>{{fullName}}</h2>
+         <h2>{{getFullname()}}</h2>
+         <h2>{{getFullname()}}</h2>
+         <h2>{{getFullname()}}</h2>
+         <h2>{{getFullname()}}</h2>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script>
+    //计算属性会有缓存，在数据不变的情况下，它只会执行一次，而方法调用几次执行几次
+        const vm = new Vue({
+            el:'#app',
+            data:{
+              lastName:'chen',
+              firstName:'shuoyu'
+              
+            },
+            computed:{
+                fullName(){
+                    console.log('fullName');
+                    return this.firstName+' '+this.lastName
+                }
+            },
+            methods:{
+                getFullname(){
+                    console.log('getfullName');
+                    return this.firstName+' '+this.lastName
+                }
+            }
+
+        } )
+</script>

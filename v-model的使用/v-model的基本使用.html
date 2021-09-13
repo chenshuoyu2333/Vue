@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue01</title>
+  </head>
+  <body>
+    <div id="app">
+        <label for="txt">
+        用户名：
+          <input type="text" id="txt" v-model='msg'>
+        </label>
+      
+     {{msg}}
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+             msg:''
+              
+            },
+          
+            methods:{
+              
+            }
+
+        } )
+</script>
