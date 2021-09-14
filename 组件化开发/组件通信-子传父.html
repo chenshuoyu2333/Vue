@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+      <!-- 在vue里，与v-bind绑定的属性不能用驼峰命名，如果想要表示驼峰须在大写字母之前加连接符 -->
+    <cpn1 @itemclick='fclick' ></cpn1>
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+
+
+  <template id="cnp1">
+      <div>
+          <button v-for="item in  categoties" @click='itemclick(item)'>{{item.name}}</button>
+        </div>
+  </template>
+  <script>
+
+        cpn1={
+            template:'#cnp1',
+            data(){
+    
+                return{
+                         categoties: [{
+              id: 'aaa',
+              name: '热门推荐'
+            },
+            {
+              id: 'bbb',
+              name: '手机数码'
+            },
+            {
+              id: 'ccc',
+              name: '家用家电'
+            },
+            {
+              id: 'ddd',
+              name: '电脑办公'
+            },
+          ] 
+                    
+      }
+        },
+        methods:{
+            itemclick(item){
+           this.$emit('itemclick',item)
+        }
+    }}
+
+
+    const app = new Vue({
+      el:"#app",
+           
+     
+      components:{
+           cpn1
+      },
+      methods:{
+          fclick(item){
+                console.log('父组件'+item.name);
+          }
+      }
+    })
+  </script>
+</body>
+</html>

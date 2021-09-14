@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <cpn1 :cmovies='movies' :cmsg="msg"></cpn1>
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <template id="cnp1">
+      <div>
+          <h2 v-for="item in cmovies" >{{item}}</h2>
+          <p>{{cmsg}}</p>
+        </div>
+  </template>
+  <script>
+ function Person(firstName,lastName) {
+      this.firstName = firstName
+      this.lastName = lastName
+    }
+ 
+    const app = new Vue({
+      el:"#app",
+           
+      data:{
+          movies:['海王','海贼王','超体','死神'],
+          msg:'你好'
+      },
+      components:{//局部组件创建
+           cpn1:{
+               template:'#cnp1',
+                 // props: ['cmovies', 'cmsg'],//数组写法
+                props:{
+        //对象写法
+        // 1.类型限制(多个类使用数组)
+        // cmovies:Array,
+        // cmessage:String,
+        // cmessage:['String','Number'],
+        // 2.提供一些默认值，以及必传值
+                    cmovies:{
+                        type:Array,
+                        default (){
+                            return []
+                        }
+                    },
+                    cmsg:{
+                        type:String,
+                       
+                        require:true,
+                    }
+        // 3.自定义验证函数
+        // vaildator: function (value) {
+        //   //这个传递的值必须匹配下列字符串中的一个
+        //   return ['zzzzz', 'ttttt', 'yyy'].indexOf(value) !== -1
+        // }
+        // 4.自定义类型
+        // cmessage:Person,
+            },
+           }
+        // cpn1:cpn1
+      }
+    })
+  </script>
+</body>
+</html>

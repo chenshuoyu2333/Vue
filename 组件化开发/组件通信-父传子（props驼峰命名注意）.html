@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+      <!-- 在vue里，与v-bind绑定的属性不能用驼峰命名，如果想要表示驼峰须在大写字母之前加连接符 -->
+    <cpn1 :c-movies='movies' :cmsg="msg"></cpn1>
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <template id="cnp1">
+      <div>
+          <h2 v-for="item in cMovies" >{{item}}</h2>
+          <p>{{cmsg}}</p>
+        </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el:"#app",
+           
+      data:{
+          movies:['海王','海贼王','超体','死神'],
+          msg:'你好'
+      },
+      components:{
+           cpn1:{
+               template:'#cnp1',
+                
+                props:{
+      
+                    cMovies:{
+                        type:Array,
+                        default (){
+                            return []
+                        }
+                    },
+                    cmsg:{
+                        type:String,
+                       
+                        require:true,
+                    }
+   
+            },
+           }
+       
+      }
+    })
+  </script>
+</body>
+</html>
