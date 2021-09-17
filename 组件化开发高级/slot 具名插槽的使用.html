@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+      <!-- 具名插槽不会被默认替换掉，想要替换需要加slot属性 -->
+    <cpn1 ><button slot="left">替换</button></cpn1>
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+
+
+  <template id="cnp1">
+      <div>
+        <slot name="left">
+            <button>左</button>
+        </slot>  
+         <slot name="center">
+            <button>中</button>
+        </slot> 
+        <!-- <slot>
+            <button>右</button>
+        </slot>  -->
+            <slot name="right">
+                <button>右</button>
+            </slot> 
+        </div>
+  </template>
+  <script>
+
+        cpn1={
+            template:'#cnp1',
+       
+    }
+
+
+    const app = new Vue({
+      el:"#app",
+           
+     
+      components:{
+           cpn1
+      },
+    
+    })
+  </script>
+</body>
+</html>
